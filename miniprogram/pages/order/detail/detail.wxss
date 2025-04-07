@@ -1,0 +1,329 @@
+page {
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+}
+.contain {
+  display: flex;
+  padding: 20rpx 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 40rpx 25rpx;
+}
+
+.top_over {
+  width: 100%;
+  height: 20rpx;
+  position: absolute;
+  left: 0rpx;
+  top: -10rpx;
+}
+
+.bot_over {
+  width: 100%;
+  height: 20rpx;
+  position: absolute;
+  left: 0rpx;
+  bottom: -10rpx;
+}
+
+.goods_box {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 100rpx;
+}
+
+.goods_img {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.goods_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20rpx;
+  width: calc(100% - 240rpx);
+  height: 90%;
+}
+
+.goods_title {
+  font-size: 29rpx;
+  letter-spacing: 3rpx;
+}
+
+.goods_author {
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+  color: rgb(150, 150, 150);
+}
+
+.goods_price {
+  width: 150rpx;
+  height: 100%;
+  font-size: 32rpx;
+  color: #f00;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border {
+  width: 100%;
+  height: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 0 10rpx 0;
+}
+
+.list_1 {
+  font-size: 26rpx;
+  color: rgb(167, 167, 167);
+  letter-spacing: 2rpx;
+}
+
+.list_2 {
+  padding-top: 10rpx;
+  font-size: 32rpx;
+  letter-spacing: 3rpx;
+}
+
+.orderfare {
+  margin-top: 28rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  color: rgb(167, 167, 167);
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+}
+.orderfare view{
+  color: rgb(255, 0, 0);
+  margin-left: 5px; /* 调整间距 */
+}
+.fare_box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.fare_title {
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+}
+
+.fare_des {
+  font-size: 27rpx;
+  color: rgb(167, 167, 167);
+}
+.bot_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cancel {
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #000;
+  color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+   letter-spacing: 4rpx;
+}
+
+.contact {
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #fbbd08;
+  color: #000;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+}
+.delete{
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #adadad;
+  color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+}
+.ancel {
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #f50000;
+  color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+}
+.deliver {
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #00ccff;
+  color: rgb(0, 0, 0);
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+}
+.select-address {
+  font-size: 30rpx;
+  width: 620rpx;
+  height: 80rpx;
+  background: #aeefff;
+  color: rgb(0, 0, 0);
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+  letter-spacing: 4rpx;
+}
+.contact_box {
+  z-index: 9;
+  position: fixed;
+  bottom: 200rpx;
+  right: 40rpx;
+  display: flex;
+  width: 100rpx;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20rpx 0;
+  border-radius: 50rpx 50rpx 20rpx 20rpx;
+  box-shadow: 0 0 20rpx #f0f0f0 !important;
+}
+
+.contact_box image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.contact_box view {
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+  margin-top: 10rpx;
+}
+
+
+
+
+/* 对话框样式 */
+/* 遮罩层样式 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+/* 对话框样式 */
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-height: 70vh;
+  background: #fff;
+  border-radius: 10rpx;
+  z-index: 999;
+  overflow: hidden;
+}
+
+/* 关闭按钮样式 */
+.close-btn {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* 对话框内容样式 */
+.dialog-content {
+  padding: 40rpx 30rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+
+/* 表格样式 */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.header-item, .row-item {
+  flex: 1;
+  text-align: center;
+  
+}
+.header-item, .row-item_ {
+  flex: 1;
+  text-align: center;
+  font-size: 9px;
+}
+.select-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+}

@@ -1,0 +1,26 @@
+<scroll-view class="scroll" scroll-y="true">
+  <view wx:for="{{addressList}}">
+    <view class="product-name-wrap">
+      <view class="ui-list-item-info">{{item.consigneeName}}
+        <text decode="{{true}}" space="{{true}}">  </text> {{item.consigneePhone}}
+      </view>
+      <view class="ui-list-item-address">
+        {{item.detailAddressText}}
+      </view>
+      <view class="ui-list-item-time">
+        <view class="set-default" wx:if='{{!item.defaultFlag}}' data-index='{{index}}' bind:tap="handleSetDefault">设为默认地址</view>
+        <view class="default" wx:else>默认地址</view>
+        
+          <view class="edi-address" data-index='{{index}}' bind:tap="ediAddress">编辑</view>
+          <view class="del-address" data-index='{{index}}' bind:tap="delAddress">删除</view>
+        
+        <!-- <p>{{defaultAddress}}</p>
+        <p class="ui-list-item-del" data-id="{{index}}" bindtap="delAddress">删除</p> -->
+      </view>
+      <view class="separate"></view>
+    </view>
+  </view>
+</scroll-view>
+<view class="add-address" bindtap="addAddress">
+  <image class="add-img"  src="../../images/add.png"></image>新增地址
+</view>

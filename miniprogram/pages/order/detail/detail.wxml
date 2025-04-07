@@ -1,0 +1,122 @@
+<view class="contain">
+	<view class="card">
+		<view class="goods_box" bindtap="detail_" data-id="{{detail.orderInfo.idleItem.id}}">
+			<image class="goods_img" src="{{detail.orderInfo.idleItem.pictureList}}"></image>
+			<view class="goods_content">
+				<view class="goods_title text-cut">{{detail.orderInfo.idleItem.idleName}}</view>
+				<!-- <view class="goods_author text-cut">买家：{{detail.buyerInfo.info.nickName}}</view> -->
+			</view>
+			<view class="goods_price">￥{{detail.orderInfo.orderPrice}}元</view>
+		</view>
+		<view class="border"></view>
+		<view class="list" >
+			<view class="list_1">{{'卖家帮送'}}</view>
+      <view  wx:if="{{detail.orderAddress.consigneeName}}">
+        <view class="list_2" >买家地址：{{detail.orderAddress.consigneeName+" "+detail.orderAddress.consigneePhone}}</view>
+        <view class="list_2">{{detail.orderAddress.detailAddress}}</view>
+      </view>
+      <view class="select-address" wx:if="{{detail.orderInfo.orderStatus !=1 &&detail.orderInfo.orderStatus !=2 && detail.orderInfo.orderStatus !=3 && detail.orderInfo.orderStatus !=4}}">
+        <view bind:tap="selectAddressDialog">选择收货地址</view>
+      </view>
+
+		</view>
+
+
+
+<!-- 遮罩层，用于点击外部关闭 -->
+<view 
+  class="mask" 
+  wx:if="{{addressDialogVisible}}"
+  bindtap="closeAddressDialog"
+></view>
+
+<!-- 地址选择对话框 -->
+<view class="dialog" wx:if="{{addressDialogVisible}}">
+  <!-- 关闭按钮 -->
+  <view class="close-btn" bindtap="closeAddressDialog">
+    <text>×</text>
+  </view>
+  
+  <view class="dialog-content">
+    <!-- 表头 -->
+    <view class="table-header">
+      <text class="header-item">收货人姓名</text>
+      <text class="header-item">手机号</text>
+      <text class="header-item">地址</text>
+      <text class="header-item">操作</text>
+    </view>
+
+    <!-- 地址数据 -->
+    <view class="table-row" wx:for="{{addressData}}" wx:key="id">
+      <text class="row-item">{{item.consigneeName}}</text>
+      <text class="row-item">{{item.consigneePhone}}</text>
+      <text class="row-item_">{{item.detailAddressText}}</text>
+      <button class="select-button" bindtap="selectAddress_" data-index="{{index}}" data-item="{{item}}">选择</button>
+    </view>
+  </view>
+</view>
+
+
+		<view class="border"></view>
+		<view class="orderfare">ORDER FARE  
+      <view> 
+         订单{{orderStatus[detail.orderInfo.orderStatus]}}
+      </view>
+    </view>
+		<view class="fare_box">
+			<view class="fare_title">订单编号</view>
+			<view class="fare_des">{{detail.orderInfo.orderNumber}}</view>
+		</view>
+		<view class="fare_box">
+			<view class="fare_title">支付状态</view>
+			<view class="fare_des">{{detail.orderInfo.paymentStatus == 0?'未支付':'已支付'}}</view>
+		</view>
+    <view class="fare_box">
+			<view class="fare_title">支付方式</view>
+			<view class="fare_des">{{detail.orderInfo.paymentWay!=null?detail.orderInfo.paymentWay:""}}</view>
+		</view>
+    <view class="fare_box">
+			<view class="fare_title">下单时间</view>
+			<view class="fare_des">{{detail.orderInfo.createTime}}</view>
+		</view>
+    <view class="fare_box">
+			<view class="fare_title">支付时间</view>
+			<view class="fare_des">{{detail.orderInfo.paymentTime!=null?detail.orderInfo.paymentTime:""}}</view>
+		</view>
+		<!-- <view class="border"></view> -->
+		<!-- <view class="orderfare">CONTACT BUYER</view> -->
+		<!-- <view class="fare_box" bindtap="copy" data-copy="{{userinfo.email}}" data-name="邮箱">
+			<view class="fare_title">邮箱</view>
+			<view class="fare_des">{{detail.buyerInfo.email}}</view>
+		</view> -->
+		<!-- <view class="fare_box" wx:if="{{detail.buyerInfo.qqnum!==''}}" bindtap="copy" data-copy="{{userinfo.qqnum}}" data-name="QQ">
+			<view class="fare_title">QQ</view>
+			<view class="fare_des">{{detail.buyerInfo.qqnum}}</view>
+		</view> -->
+		<view class="border"></view>
+
+
+    <view class="bot_box" wx:if="{{detail.orderInfo.orderStatus==0}}">
+			<view class="deliver" bindtap="payment" data-id="{{detail.orderInfo.id}}">立即支付</view>
+		</view>
+    <view class="bot_box" wx:if="{{detail.orderInfo.orderStatus==2}}">
+			<view class="deliver" bindtap="receipt" data-id="{{detail.orderInfo.id}}">确认收货</view>
+		</view>
+    <view class="bot_box" wx:if="{{detail.orderInfo.orderStatus!=1&&detail.orderInfo.orderStatus!=2&&detail.orderInfo.orderStatus!=3 &&detail.orderInfo.orderStatus!=4}}">
+			<view class="ancel" bindtap="ancel" data-id="{{detail.orderInfo.id}}">取消订单</view>
+		</view>
+		<view class="border"></view>
+		<!-- <view class="bot_box" wx:if="{{detail.status==5}}">
+			<view class="contact" bindtap="confirm">完成交易</view>
+		</view>
+		<view class="bot_box">
+			<view wx:if="{{detail.status==2||detail.status==3}}" class="delete" bindtap="delete">删除订单</view>
+		</view> -->
+	</view>
+</view>
+
+<!--悬浮聊天功能-->
+<!-- <view class="contact_box" bindtap="goo" data-id="{{roomID}}">
+	<image src="/images/chat.png"></image>
+	<view>私聊</view>
+</view> -->

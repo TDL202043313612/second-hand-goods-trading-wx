@@ -1,0 +1,102 @@
+<view class="top_box">
+	<view class="top_2">
+		<view class="avator">
+			<!-- <open-data wx:if="{{userinfo}}" type="userAvatarUrl"></open-data> -->
+      <image bind:tap="chooseImage" wx:if="{{userinfo}}" src="{{userinfo.avatar}}"></image>
+			<image wx:if="{{!userinfo}}" src="/images/avator.png"></image>
+		</view>
+	</view>
+	<view class="top_1">
+		<view wx:if="{{!userinfo}}" class="top_1_1" bindtap="go" data-go="/pages/login/quickLogin/quickLogin">点击登录</view>
+		<view wx:if="{{userinfo}}" class="top_1_1">
+			<!-- <open-data type="userNickName"></open-data> -->
+      <text>{{userinfo.nickname}}</text>
+		</view>
+		<view class="top_1_2" wx:if="{{!userinfo}}">一秒登录，体验所有功能</view>
+		<view class="top_1_2" wx:if="{{userinfo}}" bindtap="go" data-go="/pages/edit/edit" data-status="1">点击修改资料</view>
+	</view>
+</view>
+<view class="center_box">
+	<view class="center_1" bindtap="go" data-go="/pages/sell/list/list" data-status="1">
+		<image src="/images/history.png"></image>
+		<view>我的发布</view>
+	</view>
+  <view class="center_1" bindtap="go" data-go="/pages/shelf/shelf" data-status="1">
+		<image src="/images/shelf_2.png"></image>
+		<view>我的下架</view>
+	</view>
+  <view class="center_1" bindtap="go" data-go="/pages/collect/collect" data-status="1">
+		<image src="/images/collect.png"></image>
+		<view>我的收藏</view>
+	</view>
+  
+</view>
+<view class="center_box">
+<view class="center_1" bindtap="go" data-go="/pages/sale/sale" data-status="1">
+		<image src="/images/sale.png"></image>
+		<view>我的卖出</view>
+	</view>
+	<view class="center_1" bindtap="go" data-go="/pages/order/list/list" data-status="1">
+		<image src="/images/publish.png"></image>
+		<view>我的购买</view>
+	</view>
+	<view class="center_1" bindtap="goo" data-go="/pages/help/help">
+		<image src="/images/help.png"></image>
+		<view>消息中心</view>
+	</view>
+</view>
+<view class="blank"></view>
+<view class="bottom_box">
+	<view class="bottom_card" bindtap="go" data-go="/pages/appreciateCode/appreciateCode" data-status="1">
+		<view class="bottom_1">
+			<image src="/images/appreciate.png"></image>
+			<view>上传赞赏码</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+  <view class="bottom_card" bindtap="editAddress">
+		<view class="bottom_1">
+			<image src="/images/editAddress.png"></image>
+			<view>编辑地址</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+	<view class="bottom_card" bindtap="logout">
+		<view class="bottom_1">
+			<image src="/images/logout.png"></image>
+			<view>退出登录</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+
+	<!-- <view class="bottom_card" bindtap="go" data-go="/pages/about/about">
+		<view class="bottom_1">
+			<image src="/images/guanyu.png"></image>
+			<view>关于程序</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view> -->
+	<!-- <view class="bottom_card" bindtap="go" data-go="/pages/kefu/kefu" data-status="1">
+		<view class="bottom_1">
+			<image src="/images/kefu.png"></image>
+			<view>联系客服</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view> -->
+	<!-- <view class="bottom_card">
+		<view class="bottom_1">
+			<image src="/images/feedback.png"></image>
+			<view>问题反馈</view>
+		</view>
+		<image src="/images/go.png"></image>
+		<button open-type="feedback"></button>
+	</view> -->
+	<!-- <view class="bottom_card" bindtap="go" data-go="/pages/use/use" data-status="1">
+		<view class="bottom_1">
+			<image src="/images/parse.png"></image>
+			<view>用户使用手册</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view> -->
+
+</view>

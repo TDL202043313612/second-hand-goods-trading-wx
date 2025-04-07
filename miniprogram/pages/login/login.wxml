@@ -1,0 +1,28 @@
+<view class="top-bg"></view>
+<view class="contain">
+	<view class="card">
+		<!-- <view class="title">登记</view> -->
+
+		<view class="contact">
+			<input bindinput="anInput" value="{{accountNumber}}" maxlength="30" placeholder-class="pache" placeholder="请输入账号..." />
+		</view>
+		<view class="contact">
+			<input bindinput="upInput" value="{{userPassword}}" maxlength="30" placeholder-class="pache" password="true" placeholder="请输入密码..." />
+		</view>
+		
+	</view>
+      <van-divider />
+	<!-- <van-checkbox value="{{ checked }}" checked-color="#fbbd08" bind:change="onChange">
+		授权接收订单消息通知
+	</van-checkbox> -->
+	<!--底部确认-->
+	<button class="confirm" open-type='getUserInfo' bindgetuserinfo="check">登录</button>
+  <button class="confirm" open-type='getUserInfo' bindgetuserinfo="toRegister">注册</button>
+	<!-- <view class="shen_title">
+		<image class="about" src="/images/about.png" />使用申明
+	</view> -->
+	<!-- <view class="des">1. 请确保微信号、qq号和邮箱百分百有效，之后将用于发送实时订单通知。</view>
+	<view class="des">2. 在未经您同意及确认之前，本程序不会将您的注册信息用于任何其它商业目的。</view>
+	<view class="des">3. 本程序将对您所提供的资料进行严格的管理及保护，本程序将使用相应的技术，防止您的个人资料丢失、被盗用或遭篡改。</view>
+	<view class="des">4. 请您放心使用！</view> -->
+</view>

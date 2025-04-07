@@ -1,0 +1,5 @@
+<view class="top-bg">
+	<button class="confirm" open-type='getUserInfo' bindgetuserinfo="go">一键登录</button>
+  <button class="confirm" open-type='getUserInfo' bindgetuserinfo="go" data-go="/pages/login/login">账号密码登录</button>
+
+</view>

@@ -1,0 +1,158 @@
+<wxs src="../../common.wxs" module="morejs" />
+<view class="top_contain">
+      <!--轮播图-->
+      <swiper indicator-dots='true' autoplay='true' interval='5000' duration='500' circular="true" >
+            <block wx:for="{{publishinfo.pictureList}}" wx:key="index">
+                  <swiper-item class="image">
+                        <image src='{{item}}' mode="scaleToFill" bindtap="img" data-src="{{item}}"></image>
+                  </swiper-item>
+            </block>
+      </swiper>
+      
+      <view class="title text-cut">{{publishinfo.idleName}}</view>
+      <view class="price_box">
+            <view class="now_price">￥{{publishinfo.idlePrice}}元</view>
+      </view>
+</view>
+<view class="blank"></view>
+<view class="center_contain">
+      <view bindtap="changeTitle" data-id="{{ true }}" class="c_title {{first_title?'title_on':''}}">发布信息</view>
+      <view bindtap="changeTitle" data-id="{{ false }}" class="c_title {{first_title?'':'title_on'}}">物品详情</view>
+</view>
+<!--发布信息-->
+<view hidden="{{!first_title}}">
+      <view class="user_box">
+            <image lazy-load src="{{publishinfo.user.avatar}}"></image>
+            <view class="des_box">
+                  <view class="user_name">{{publishinfo.user.nickname}}</view>
+                  <view class="local_box">
+                        <image src="/images/local.png"></image>
+                        <view>{{publishinfo.idlePlace}}</view>
+                  </view>
+            </view>
+            <view class="sex">
+                  <!-- <image lazy-load src="{{userinfo.info.gender==0?'/images/none.png':(userinfo.info.gender==1?'/images/boy.png':'/images/girl.png')}}"></image> -->
+            </view>
+      </view>
+      <view class="time_box">
+            <view class="kind">{{publishinfo.idleLabel==1 ? "数码":publishinfo.idleLabel==2 ? "家电" : publishinfo.idleLabel==3 ? "户外" : publishinfo.idleLabel==4 ? "图书" : "其他" }}类物品</view>
+            <view class="time">发布于: {{publishinfo.releaseTime}}</view>
+      </view>
+      <view class="deliver_box">
+            <view class="deliver_first">
+                  <view class="deliver_title">取货方式：</view>
+                  <view class="deliver_kind">{{publishinfo.deliveryid==0?'自提':'帮送'}}</view>
+            </view>
+            <view class="deliver_place">{{publishinfo.place}}</view>
+      </view>
+      <view class="palceInput_box" wx:if="{{publishinfo.deliveryid==1}}">
+            <input bindinput="placeInput" placeholder="卖家可以帮送，请填写您的收货地址"></input>
+      </view>
+      <!-- <view class="notes_box" wx:if="{{roomlist!==''}}">
+            <view class="notes">
+                  <view class="notes_text">全部留言:</view>
+                  <text class="notes_text" selectable="true">{{publishinfo.idleDetails}}</text>
+                  <block wx:for="{{roomlist}}">
+                  <image src='{{item.fromU.avatar}}' mode="scaleToFill"></image>
+                    
+                  </block>
+            </view>
+      </view> -->
+
+
+      <view class="notes_box" wx:if="{{roomlist!==''}}">
+            <view class="notes">
+                  <view class="notes_text">全部留言:</view>
+                  <view class="middle" wx:if="{{roomlist.length==0}}">
+                    暂无留言
+                  </view>
+                  <view class="item" wx:for="{{roomlist}}">
+                    <view class="left">
+                      <image mode="aspectFill" src="{{item.fromU.avatar}}"  bindtap="go" data-id="{{item.idle.id}}" ></image>
+                    </view>
+                    <view class="middle"   bindtap="go" data-id="{{item.user.id}}" >
+                      <view class="title_">{{item.fromU.nickname}}
+                        <view class="b11_">{{item.fromU.id == publishinfo.user.id? '【商家】':'【顾客】'}}</view>
+                        {{item.toU.nickname?' @'+item.toU.nickname+'：'+
+                        item.toM.content:''}}
+                      </view>
+
+                      <view class="content" bind:tap="detailMessage" data-index="{{index}}">{{item.content}}</view>
+                      <view class="date">{{item.createTime}}</view>
+                    </view>
+                     
+                    <view class="right_">
+                      <button class="btn" data-index="{{index}}" bindtap="replyMessage" >回复</button>
+                    </view>
+                  </view>
+                  <!-- 留言弹框 -->
+                  <modal wx:if="{{showModal}}" title="留言详情" confirm-text="回复"  cancel-text="关闭" bindconfirm="onModalConfirm" bindcancel="hideModal" data-index="{{index}}">
+                      <view>{{selectedContent}}</view>
+                  </modal>  
+                    <!--默认action-sheet为隐藏，由button触发-->
+                    <action-sheet hidden="{{actionSheetHidden}}">
+                      <view wx:if="{{isReply}}" style="padding-bottom: 10px;">
+                            <button type="primary" bindtap="cancelReply">回复：{{replyData.toMessage}} @{{replyData.toUserNickname}} <i class="el-icon-close el-icon--right"></i></button>
+                      </view>
+                      <action-sheet-item >
+                        <input type="text" placeholder="请输入一些内容" value="{{replyContent}}" bindinput="obtainInput"/>
+                      </action-sheet-item>
+                      <!--自动隐藏action-sheet-->
+                      <action-sheet-cancel  bindtap="inputConfirm">确认</action-sheet-cancel>
+                      <action-sheet-cancel bindtap="inputCancel">取消</action-sheet-cancel>
+                    </action-sheet>
+                    
+
+            </view>
+      </view>
+
+</view>
+<!--物品详情-->
+<view hidden="{{first_title}}">
+      <view class="detail_contain">
+            <view class="detail_card">
+                  <view class="detail_title">物品描述</view>
+                  <view class="detail_content">{{publishinfo.idleDetails}}</view>
+            </view>
+            <!--物品详情预览-->
+            <block class="image" wx:for="{{publishinfo.pictureList}}" wx:key="index">
+                  <view>
+                        <!-- <image class='img' src='{{item}}' data-index='index' bindtap='previewImg'></image>-->
+                        <image src="{{item}}" mode="scaleToFill" bindtap="img" data-src="{{item}}"></image>
+                  </view>
+            </block>
+      </view>
+</view>
+<view style="height: 96rpx;"></view>
+<!--底部导航-->
+<view class="tabbar">
+      <view class="t_card">
+            <image src="/images/home.png"></image>
+            <text>首页</text>
+            <button class="t_button" bindtap="home"></button>
+      </view>
+      <view class="t_card" bindtap="my">
+            <image src="/images/tabbar/my.png"></image>
+            <text>我的</text>
+      </view>
+      <view class="buy_box">
+            <view class="collect shadow" bindtap="collect" wx:if='{{!isMaster&&publishinfo.idleStatus==1}}' data-id='{{publishinfo.id}}'>{{isFavorite?'取消收藏':'收藏'}}</view>
+            <view class="buy shadow" bindtap="buy" wx:if='{{!isMaster && publishinfo.idleStatus==1}}' data-detail="{{publishinfo}}">立即购买</view>
+            
+            <view class="buy shadow" wx:if='{{!isMaster && publishinfo.idleStatus==2}}'>闲置已下架或删除</view>
+            <view class="buy shadow" bindtap="downShelf" data-del="{{publishinfo}}" wx:if='{{isMaster && publishinfo.idleStatus==1}}'>下架</view>
+            <view class="buy shadow" bindtap="upShelf" data-up="{{publishinfo}}" wx:if='{{isMaster && publishinfo.idleStatus==2}}'>重新上架</view>
+      </view>
+</view>
+
+
+<view class="contact_box" bindtap="leaveMessage">
+     <image src="/images/chat.png" ></image>
+     <view>留言</view>
+</view>
+
+<!--悬浮聊天功能-->
+<!-- <view class="contact_box" bindtap="goo" data-id="{{roomID}}" >
+     <image src="/images/chat.png" ></image>
+     <view>私聊</view>
+</view> -->

@@ -1,0 +1,17 @@
+<view class="list">
+	<view class="item" wx:for="{{roomlist}}">
+		<view class="left">
+			<image mode="aspectFill" src="{{item.fromU.avatar}}"  bindtap="go" data-id="{{item.idle.id}}" ></image>
+		</view>
+		<view class="middle"   bindtap="go" data-id="{{item.idle.id}}" >
+			<view class="title">{{item.fromU.nickname}}</view>
+      <view class="title">{{item.content}}</view>
+			<view class="date">{{item.createTime}}</view>
+		</view>
+		<view class="right_">
+      <image  mode="aspectFill" src="{{item.idle.pictureList}}"  bindtap="go" data-id="{{item.idle.id}}" ></image>
+			<!-- <button class="btn"  bindtap="sendTip" >拍一拍</button>
+				<button class="btn"  bindtap="slideButtonTap" data-delid="{{item.roomid}}">删除</button> -->
+		</view>
+	</view>
+</view>

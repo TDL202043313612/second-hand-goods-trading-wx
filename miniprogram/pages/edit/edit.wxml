@@ -1,0 +1,39 @@
+<view class="top-bg"></view>
+<view class="contain">
+      <view class="card">
+            <view class="title">修改资料</view>
+            <view class="contact">
+			        <input disabled="{{nameIsDisabled}}" bindinput="anInput" value="{{oAccountname}}" maxlength="30" placeholder-class="pache" placeholder="请输入名称..." />
+              <button bindtap="nameChange" >{{nameButtonValue}}</button>
+		        </view>
+            <view wx:if="{{userPasswordEdit}}">
+              <view class="contact" >
+                <input disabled="{{false}}" bindinput="upInput_1" maxlength="30" placeholder-class="pache" password="true" placeholder="请输入原密码..." />
+              </view>
+              <view class="contact" >
+                <input disabled="{{false}}" bindinput="upInput_2" maxlength="30" placeholder-class="pache" password="true" placeholder="请输入密码..." />
+                
+              </view>
+              <view class="contact" >
+                <input disabled="{{false}}" bindinput="upInput_3" maxlength="30" placeholder-class="pache" password="true" placeholder="请再次输入密码..." />
+                <button bindtap="savePassword" >修改</button>
+              </view>
+            </view>
+            
+            <view  class="contact" wx:else>
+              <input disabled="{{true}}"  value="{{1234}}" maxlength="30" placeholder-class="pache" password="true" placeholder="请输入密码..." />
+              <button bindtap="changeUserPasswordEdit" >编辑</button>
+            </view>
+      </view>
+       <van-divider />
+
+      <!--底部确认-->
+      <button class="confirm" open-type='getUserInfo' bindgetuserinfo="getUserInfo">完成</button>
+      <view class="shen_title">
+            <image class="about" src="/images/about.png" />使用申明
+      </view>
+      <view class="des">1. 请确保微信号、qq号和邮箱百分百有效，之后将用于发送实时订单通知。</view>
+      <view class="des">2. 在未经您同意及确认之前，本程序不会将您的注册信息用于任何其它商业目的。</view>
+      <view class="des">3. 本程序将对您所提供的资料进行严格的管理及保护，本程序将使用相应的技术，防止您的个人资料丢失、被盗用或遭篡改。</view>
+      <view class="des">4. 请您放心使用！</view>
+</view>
