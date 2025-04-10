@@ -19,7 +19,8 @@ Page({
             userInfo:{
               accountNumber:'',
               userPassword:'',
-              nickname:''
+              nickname:'',
+              userType:''
             }
       },
 
@@ -71,6 +72,8 @@ Page({
             //校检密码
             let Password = that.data.userInfo.userPassword;
             let Password_ = that.data.userPassword_;
+
+            that.data.userInfo.userType = 1;
             if(name == ""){
               wx.showToast({
                 title: '昵称不能为空',
@@ -120,11 +123,11 @@ Page({
         that.showLoading("正在提交","网络错误",3000)
         console.log("userInfo: ",userInfo);
         try {
-          const res = await request('/user/sign-in',{userInfo},'POST');
+          const res = await request('/user/sign-in',userInfo,'POST');
           console.log("register_res: ",res);
           wx.hideLoading();
           if(res.status_code == 1){
-            wx.hideLoading();
+            // wx.hideLoading();
             wx.showToast({
               title: '注册成功',
               icon: 'success',
@@ -132,7 +135,7 @@ Page({
             app.deltaNum--;
             wx.navigateBack({})
           }else {
-            wx.hideLoading();
+            // wx.hideLoading();
             wx.showToast({
               title: res.msg,
               icon: 'none',
@@ -140,6 +143,11 @@ Page({
           }
           
         }catch(e){
+          wx.hideLoading();
+          wx.showToast({
+            title: '注册失败',
+            icon:'none'
+          })
           console.error(e);
         }
         

@@ -102,7 +102,7 @@ Page({
         try {
           const res = await request('/user/login',{accountNumber: accountNumber,
                                 userPassword: userPassword},'GET');
-          // console.log("login_res: ",res);
+          console.log("login_res: ",res);
           wx.hideLoading();
           if(res.status_code == 1){
             wx.hideLoading();

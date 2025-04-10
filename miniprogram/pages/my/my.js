@@ -219,6 +219,9 @@ Page({
                     userinfo:'',
                     openid:''
                   })
+                  
+                  wx.setStorageSync('cookies', "");
+                  
                   console.log("login out");
                   
                 }else {

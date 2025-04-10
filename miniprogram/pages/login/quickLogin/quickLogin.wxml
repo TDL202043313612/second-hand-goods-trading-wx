@@ -1,5 +1,5 @@
-<view class="top-bg">
-	<button class="confirm" open-type='getUserInfo' bindgetuserinfo="go">一键登录</button>
-  <button class="confirm" open-type='getUserInfo' bindgetuserinfo="go" data-go="/pages/login/login">账号密码登录</button>
-
+<view  class="top-bg">
+    <!-- 初始登录选择界面 -->
+    <button class="confirm" bindtap="oneClick" type="primary">一键登录</button>
+    <button class="confirm" bindtap="go" data-go="/pages/login/login">账号密码登录</button>
 </view>

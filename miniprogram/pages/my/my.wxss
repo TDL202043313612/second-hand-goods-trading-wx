@@ -19,6 +19,10 @@
 .top_1_1 {
       font-size: 42rpx;
       letter-spacing: 2rpx;
+      display: flex; 
+      flex-direction: row; 
+      
+      
 }
 
 .top_1_2 {
@@ -56,7 +60,15 @@
       justify-content: space-around;
       box-sizing: border-box;
 }
+.wechat_icon{
+  width: 160rpx;
+  height: 160rpx;
+}
+.wechat_icon image{
+  width: 60rpx;
+  height: 60rpx;
 
+}
 .center_1 {
       width: 160rpx;
       height: 160rpx;

@@ -15,8 +15,8 @@ function uploadFile(url, filePath, name = 'file', formData = {}, headers = {}) {
     // });
     // 调用 wx.uploadFile
     wx.uploadFile({
-      // url: 'http://localhost:8080' + url, // 拼接完整的接口地址
-      url: 'http://120.27.141.104:8080' + url, // 拼接完整的接口地址
+      url: 'http://localhost:8080' + url, // 拼接完整的接口地址
+      // url: 'http://120.27.141.104:8080' + url, // 拼接完整的接口地址
       filePath: filePath, // 临时文件路径
       name: name, // 文件对应的 key
       formData: formData, // 额外的表单数据

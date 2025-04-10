@@ -6,8 +6,8 @@ function request(url, data = {}, method = 'GET') {
     //   title: '加载中...'
     // });
     wx.request({
-      // url: 'http://localhost:8080' + url, 
-      url: 'http://120.27.141.104:8080/' + url, 
+      url: 'http://localhost:8080' + url, 
+      // url: 'http://120.27.141.104:8080/' + url, 
       data: data,
       method: method,
       header: {

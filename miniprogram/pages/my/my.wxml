@@ -11,9 +11,12 @@
 		<view wx:if="{{userinfo}}" class="top_1_1">
 			<!-- <open-data type="userNickName"></open-data> -->
       <text>{{userinfo.nickname}}</text>
+      <view wx:if="{{userinfo.userType == 2}}" class="wechat_icon" bindtap="go" data-go="/pages/shelf/shelf" data-status="1">
+        <image  src="/images/weixin_2.png"></image>
+	    </view>
 		</view>
 		<view class="top_1_2" wx:if="{{!userinfo}}">一秒登录，体验所有功能</view>
-		<view class="top_1_2" wx:if="{{userinfo}}" bindtap="go" data-go="/pages/edit/edit" data-status="1">点击修改资料</view>
+		<view class="top_1_2" wx:if="{{userinfo && userinfo.userType == 1}}" bindtap="go" data-go="/pages/edit/edit" data-status="1">点击修改资料</view>
 	</view>
 </view>
 <view class="center_box">

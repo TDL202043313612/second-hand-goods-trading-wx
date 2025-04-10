@@ -1,69 +1,66 @@
 // pages/login/quickLogin/quickLogin.js
+const { default: request } = require("../../../utils/request.js");
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    isHide: false,
+    userInfo:{
+      nickname:'',
+      avatar:'',
+      userType:'',
+      code:''
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  oneClick(e){
+    let that = this;
 
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        // console.log("获取用户信息成功", res)
+        that.setData({
+          userInfo:res.userInfo
+        })
+        console.log("res.userInfo: ",res.userInfo);
+        that.data.userInfo.nickname = res.userInfo.nickName;
+        that.data.userInfo.avatar = res.userInfo.avatarUrl;
+        that.data.userInfo.userType = 2;
+        
+
+        wx.login({
+          success: async(res) => {
+            that.data.userInfo.code = res.code;
+            try{
+              const res = await request('/wxuser/wxlogin',that.data.userInfo,'POST')
+              console.log("oneClick: ",res);
+
+              app.openid = res.data.id;
+              app.userinfo = res.data;
+              wx.navigateBack();
+            }catch(e){
+              console.error(e);
+            }
+          },
+        })
+      },
+      fail: res => {
+        // console.log("获取用户信息失败", res)
+      }
+    })
+
+
+    // this.setData({
+    //   isHide: true
+    // });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  },
-
   go(e) {
     wx.navigateTo({
           url: e.currentTarget.dataset.go
