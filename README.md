@@ -1,7 +1,5 @@
-# Secondary_trading_applet
-
 基于微信小程序的校园二手交易平台
-
+基于SpringBoot后端：https://github.com/TDL202043313612/second-hand-goods-trading-SpringBoot-Vue
 
 
 ### 功能
